@@ -6,9 +6,19 @@
 //
 
 #include <iostream>
-
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
-    return 0;
+using namespace std;
+int main() {
+    int x,n,a,b,k=0;
+    cin>>n>>x>>a;
+    for(int i = 1;i<=n;i++){
+        cin>>b;
+        a = a*x + b;
+        k = k+2;
+        
+    }
+    cout<<"a="<<a<<endl;
+    cout<<"k="<<k<<endl;
 }
+
+
+
