@@ -20,4 +20,9 @@ class BooksCVC: UICollectionViewCell {
         imageView.layer.cornerRadius = 8
     }
 
+    func updateCell(book: BooksDM) {
+        imageView.image = book.image
+        textLbl.text = book.title
+    }
+    
 }

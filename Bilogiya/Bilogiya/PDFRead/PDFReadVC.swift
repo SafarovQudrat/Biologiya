@@ -10,28 +10,38 @@ import PDFKit
 class PDFReadVC: UIViewController {
 
     let pdfView = PDFView()
-    let text = ""
-    
+    var text = "5-sinf biologiya"
+    var navTitle = "5-sinf biologiya"
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(pdfView)
-        guard let url = Bundle.main.url(forResource: text, withExtension: "pdf") else {return}
-        guard let document = PDFDocument(url: url) else {return}
-        pdfView.document = document
+       setNavBar()
+        setPdfView()
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         pdfView.frame = view.bounds
     }
 
-    /*
-    // MARK: - Navigation
+    func setNavBar(){
+        if #available(iOS 13.0, *) {
+            let apparence = UINavigationBarAppearance()
+            apparence.configureWithOpaqueBackground()
+            apparence.backgroundColor = .white
+            self.navigationItem.standardAppearance = apparence
+            self.navigationItem.scrollEdgeAppearance = apparence
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        } 
+                navigationItem.title = navTitle
     }
-    */
+    
+    func setPdfView(){
+        view.addSubview(pdfView)
+        pdfView.autoScales = true
+        guard let url = Bundle.main.url(forResource: text, withExtension: "pdf") else {return}
+        guard let document = PDFDocument(url: url) else {return}
+        pdfView.document = document
+    }
+    
+  
 
 }
